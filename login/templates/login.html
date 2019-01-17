@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}登录页{% endblock %}
 {% block content %}
+
     <div class="container">
-        <form action="/login/" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <lable>账号/用户名：</lable>
-                <input type="text" name="username" placeholder="请输入账号/用户名" class="form-control" style="width: 50%">
+        <div style="margin: 0 auto; width: 50%">
+            <h1 style="margin-left:35%">登录页</h1>
+            <form action="/login/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>账号/用户名：</label>
+                    <input type="text" name="username" placeholder="请输入账号/用户名" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>密码：</label>
+                    <input type="password" name="password" placeholder="请输入密码" class="form-control">
+                </div>
+                <button type="submit" class="btn-default form-control">登录</button>
+            </form>
+                <!--错误信息-->
+            <div name = "message" style="color: red;margin-left:35%">
+                {% if message %}
+                    {{ message }}
+                    <a href="/register/">去注册</a>
+                {% endif %}
             </div>
-            <div class="form-group">
-                <lable>密码：</lable>
-            <input type="password" name="password" placeholder="请输入密码" class="form-control" style="width: 50%">
-            </div>
-            <button type="submit" class="btn-default form-control" style="width: 50%">登录</button>
-        </form>
+        </div>
+
     </div>
-        <!--错误信息-->
-    <div name = "message" style="color: red">
-        {% if message %}
-            {{ message }}
-        {% endif %}
-    </div>
+
 
 {% endblock %}

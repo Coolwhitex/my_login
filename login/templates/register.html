@@ -2,20 +2,28 @@
 {% block title %}注册页{% endblock %}
 
 {% block content %}
-    <h1>注册页</h1>
+    <h1 class="container" style="width: 20%">注册页</h1>
+
+    <!--错误提示-->
+    <div class="container" style="color: red" name="message">
+        {% if message %}
+            {{ message }}
+        {% endif %}
+    </div>
     <div class="container">
-        <form action="/register/">
+        <form action="/register/" method="post">
+        {% csrf_token %}
             <div class="form-group">
-                <lable>用户名：</lable>
+                <label>用户名：</label>
                 <input type="text" name="username" placeholder="用户名1-20个字，中英文或-" required="required" class="form-control">
             </div>
 
             <div class="form-group">
-                <lable>密码：</lable>
+                <label>密码：</label>
                 <input type="password" name="password" placeholder="请输入密码 20字以下" required="required" class="form-control">
             </div>
             <div class="form-group">
-                <lable>邮箱：</lable>
+                <label>邮箱：</label>
                 <input type="email" name="email" placeholder="请输入邮箱" required="required" class="form-control">
             </div>
             <input type="submit" value="确认注册" class="form-control btn-default">
