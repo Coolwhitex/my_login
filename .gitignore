@@ -1,0 +1,4 @@
+.idea/
+db.sqlite3
+*/migrations/
+_pycache_/
